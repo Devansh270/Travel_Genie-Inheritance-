@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap");
+
+/* Global */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  background: #f5f7fb;
+  color: #0f172a;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 26px;
+  color: #1e3a8a;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #1e293b;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.nav-links button {
+  margin-left: 20px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Landing */
+.landing-page {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+  color: white;
+}
+
+.landing-page h1 {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.landing-page p {
+  font-size: 1.4rem;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+
+.landing-page button {
+  margin-top: 35px;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 50px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.4);
+  transition: 0.3s;
+}
+
+.landing-page button:hover {
+  transform: translateY(-3px);
+}
+
+/* Auth Pages */
+.auth-bg {
+  min-height: 92vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=80");
+  background-size: cover;
+  background-position: center;
+}
+
+.auth-card {
+  background: white;
+  padding: 50px 45px;
+  border-radius: 25px;
+  width: 380px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+}
+
+.auth-card h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+.auth-card p {
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #64748b;
+}
+
+.auth-card input {
+  width: 100%;
+  padding: 14px;
+  margin: 10px 0;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+.auth-card input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+}
+
+.auth-card button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 14px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+  transition: 0.3s;
+}
+
+.auth-card button:hover {
+  transform: translateY(-2px);
+}
+
+.auth-footer {
+  margin-top: 25px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.auth-footer a {
+  margin-left: 6px;
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Chat */
+.chat-page {
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #eef2ff;
+}
+
+.chat-window {
+  padding: 50px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.chat {
+  max-width: 70%;
+  padding: 16px 20px;
+  margin: 14px 0;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.chat.user {
+  background: #2563eb;
+  color: white;
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+}
+
+.chat.bot {
+  background: white;
+  color: #0f172a;
+  margin-right: auto;
+  border-bottom-left-radius: 6px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.06);
+}
+
+/* Add to Itinerary Button */
+.add-btn {
+  padding: 12px 28px;
+  border: none;
+  border-radius: 25px;
+  background: #16a34a;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(22, 163, 74, 0.35);
+}
+
+/* Chat Input */
+.chatbox {
+  padding: 22px;
+  background: white;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.chat-input {
+  display: flex;
+  gap: 12px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  font-size: 15px;
+}
+
+.chat-input button {
+  padding: 16px 30px;
+  border: none;
+  border-radius: 14px;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Itineraries */
+.itinerary-page {
+  padding: 50px;
+  text-align: center;
+}
+
+.itinerary-page h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #1e3a8a;
+}
+
+.itinerary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding-top: 30px;
+}
+
+.itinerary-card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  transition: 0.3s;
+}
+
+.itinerary-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .landing-page h1 {
+    font-size: 2.8rem;
+  }
+
+  .landing-page p {
+    font-size: 1.1rem;
+  }
+
+  .chat-window {
+    padding: 25px;
+  }
+
+  .auth-card {
+    width: 90%;
+  }
+}
