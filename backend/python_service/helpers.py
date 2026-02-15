@@ -2,8 +2,7 @@ import re
 import os
 import pandas as pd
 
-# Build absolute path safely
-#adding to git
+# ---------- Dataset Path ----------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "data", "cleaned", "final_dataset_clean.csv")
 
@@ -20,6 +19,7 @@ for col in ["place_name", "description", "category", "budget"]:
     df[col] = df[col].astype(str).str.lower()
 
 
+# ---------- Extraction ----------
 def extract_city(q):
     m = re.search(r"(trip to|visit|to)\s+([a-z\s]+)", q.lower())
     return m.group(2).strip() if m else None
@@ -47,32 +47,42 @@ def extract_category(q):
     return "any"
 
 
+# ---------- Itinerary Generator ----------
 def generate_itinerary(city, days, budget, category):
     city = city.lower()
 
-    def valid(row):
-        text = row.place_name + " " + row.description
-        return city in text
+    # Filter by city
+    f = df[
+        df["place_name"].str.contains(city, na=False) |
+        df["description"].str.contains(city, na=False)
+    ]
 
-    f = df[df.apply(valid, axis=1)]
-
+    # Filter category
     if category != "any":
-        fc = f[f.category.str.contains(category)]
+        fc = f[f["category"].str.contains(category, na=False)]
         if not fc.empty:
             f = fc
 
-    fb = f[f.budget.str.contains(budget)]
+    # Filter budget
+    fb = f[f["budget"].str.contains(budget, na=False)]
     if not fb.empty:
         f = fb
 
+    # If nothing matches, fallback to whole dataset
     if f.empty:
-        return df.sample(min(days, len(df)))
+        f = df
 
-    return f.sample(min(days, len(f)))
+    # 🔥 ENSURE EXACT NUMBER OF DAYS
+    if len(f) < days:
+        repeats = (days // len(f)) + 1
+        f = pd.concat([f] * repeats)
+
+    return f.sample(days)
 
 
+# ---------- Clean Output ----------
 def format_itinerary(itin):
     return "\n".join(
-        f"Day {i}: Visit {r.place_name.title()}. {r.description}"
+        f"Day {i}: Visit {r.place_name.title()}."
         for i, r in enumerate(itin.itertuples(), 1)
     )
